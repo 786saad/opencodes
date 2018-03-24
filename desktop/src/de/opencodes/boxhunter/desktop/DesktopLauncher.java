@@ -5,8 +5,11 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import de.opencodes.boxhunter.BoxhunterMain;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.height = 720;
+		config.width = 1280;
+		config.resizable = false;
 		new LwjglApplication(new BoxhunterMain(), config);
 	}
 }

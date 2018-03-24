@@ -6,40 +6,38 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * Any new entity (Player, Enemy, Map, Items...) is initialized in GameWorld.
- * Getters are required for GameRenderer to access the positional data of each entity
+ * Getters are required for GameRenderer to access the positional data of each
+ * entity
  */
 public class GameWorld {
 
-    private Player player1 = new Player(0,0,12,18);
+	private Player player1 = new Player(0, 0, 12, 18);
 
-    //testvariable
-    int x = 0;
+	// testvariable
+	int x = 0;
+
 	public void update(float delta) {
-        Gdx.app.log("GameWorld", "update");
+		Gdx.app.log("GameWorld", "update");
 
+		// teest
 
-        //teest
+		int y = (int) getPlayer1().getPosition().y;
 
+		player1.setPosition(new Vector2(x++, y));
 
-       int y = (int) getPlayer1().getPosition().y;
+		if (player1.getPosition().x > 137) {
+			player1.setPosition(new Vector2(0, y));
+		}
+	}
 
-       player1.setPosition(new Vector2(x++, y));
+	// --------------getter and setter-------------
 
-        if (player1.getPosition().x > 137) {
-        	player1.setPosition(new Vector2(0,y));
-        }
-    }
+	public Player getPlayer1() {
+		return player1;
+	}
 
+	public void setPlayer1(Player player1) {
+		this.player1 = player1;
+	}
 
-
-    //--------------getter and setter-------------
-
-    public Player getPlayer1() {
-        return player1;
-    }
-    public void setPlayer1(Player player1) {
-        this.player1 = player1;
-    }
-
-	
 }
