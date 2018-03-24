@@ -44,7 +44,7 @@ public class GameRenderer {
         shapeRenderer.setColor(Color.RED);
         
         // Zeichne den Spieler
-        shapeRenderer.rect(myWorld.getPlayer1().getxPos(), myWorld.getPlayer1().getyPos(),
+        shapeRenderer.rect(myWorld.getPlayer1().getPosition().x, myWorld.getPlayer1().getPosition().y,
                 myWorld.getPlayer1().getWidth(), myWorld.getPlayer1().getHeigth());
         
         // Höre auf mit malen

@@ -1,18 +1,27 @@
 package de.opencodes.boxhunter;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 public class Player {
 
 
     private Rectangle myRectangle;
-    private int xPos, yPos, width, heigth;
+
+    private int width, heigth;
+
+
+
+    private Vector2 velocity;
+    private Vector2 position;
 
 
     //------------------------constructor---------------------
 
     public Player(int xPos, int yPos, int width, int height) {
         myRectangle = new Rectangle(xPos,yPos,width,height);
+        velocity = new Vector2(0,0);
+        position = new Vector2(xPos, yPos);
     }
 
     //------------------------getter and setter-----------------------------
@@ -20,27 +29,18 @@ public class Player {
         return myRectangle;
     }
 
-    public void setRectangle(int xPos, int yPos, int width, int height) {
-        this.xPos = xPos;
-        this.yPos = yPos;
+    public void setRectangle(Vector2 position, int width, int height) {
+        this.position = position;
         this.width = width;
         this.heigth = height;
     }
 
-    public int getxPos() {
-        return xPos;
+    public Vector2 getPosition() {
+        return position;
     }
 
-    public void setxPos(int xPos) {
-        this.xPos = xPos;
-    }
-
-    public int getyPos() {
-        return yPos;
-    }
-
-    public void setyPos(int yPos) {
-        this.yPos = yPos;
+    public void setPosition(Vector2 position) {
+        this.position = position;
     }
 
     public int getWidth() {
@@ -58,4 +58,14 @@ public class Player {
     public void setHeigth(int heigth) {
         this.heigth = heigth;
     }
+
+
+    public Vector2 getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(Vector2 velocity) {
+        this.velocity = velocity;
+    }
+
 }

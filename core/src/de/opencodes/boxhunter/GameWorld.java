@@ -2,6 +2,7 @@ package de.opencodes.boxhunter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 /**
  * Any new entity (Player, Enemy, Map, Items...) is initialized in GameWorld.
@@ -11,18 +12,21 @@ public class GameWorld {
 
     private Player player1 = new Player(0,0,12,18);
 
-	
+    //testvariable
+    int x = 0;
 	public void update(float delta) {
         Gdx.app.log("GameWorld", "update");
 
 
         //teest
 
-       int x = 0;
-        player1.setxPos(x++);
 
-        if (player1.getxPos() > 137) {
-        	player1.setxPos(0);
+       int y = (int) getPlayer1().getPosition().y;
+
+       player1.setPosition(new Vector2(x++, y));
+
+        if (player1.getPosition().x > 137) {
+        	player1.setPosition(new Vector2(0,y));
         }
     }
 
