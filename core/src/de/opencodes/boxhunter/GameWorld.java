@@ -28,6 +28,7 @@ public class GameWorld {
     System.out.println("SpielerposY = " + player1.getPosition().y);
   }
 
+
   // --------------getter and setter-------------
 
   public Player getPlayer1() {
