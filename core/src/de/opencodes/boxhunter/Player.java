@@ -63,12 +63,6 @@ public class Player {
         return myRectangle;
     }
 
-    public void setRectangle(Vector2 position, int width, int height) {
-        this.position = position;
-        this.width = width;
-        this.heigth = height;
-    }
-
 
     public int getHeigth() {
         return (int) myRectangle.getHeight();
@@ -80,7 +74,7 @@ public class Player {
     }
 
     public int getWidth() {
-        return (int)myRectangle.getWidth();
+        return (int) myRectangle.getWidth();
     }
 
     public void setVelocity(Vector2 velocity) {
