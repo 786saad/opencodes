@@ -3,6 +3,10 @@ package de.opencodes.boxhunter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
+/**
+ * A scene is for example a menu, a game screen, the game over screen,
+ * option screen, pause screen, etc.
+ */
 public class GameScreen implements Screen {
 
 	private GameWorld world;
