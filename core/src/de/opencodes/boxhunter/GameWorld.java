@@ -18,9 +18,8 @@ public class GameWorld {
 
 	public void update(float delta) {
 
-		if (player1.getPosition().x < 137) {
-			player1.moveRight();
-		}
+		player1.update();
+		
         System.out.println("SpielerposX = " + player1.getPosition().x);
         System.out.println("SpielerposY = " + player1.getPosition().y);
     }

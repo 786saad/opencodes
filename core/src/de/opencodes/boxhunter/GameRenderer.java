@@ -43,6 +43,8 @@ public class GameRenderer {
 		shapeRenderer.setColor(Color.RED);
 
 		// Zeichne den Spieler
+		System.out.println("RENDERER: " + myWorld.getPlayer1().getHeigth());
+		System.out.println("RENDERER: " + myWorld.getPlayer1().getWidth());
 		shapeRenderer.rect(myWorld.getPlayer1().getPosition().x, myWorld.getPlayer1().getPosition().y,
 				myWorld.getPlayer1().getWidth(), myWorld.getPlayer1().getHeigth());
 
