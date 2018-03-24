@@ -7,11 +7,21 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+/**
+ * While GameWorld changes/modifies/saves entities 
+ * the GameRenderer draws the entities to the screen.
+ * 
+ */
 public class GameRenderer {
 
+	// To access each entity via getters
 	private GameWorld myWorld;
+	
+	// Main Camera
 	private OrthographicCamera cam;
-    private ShapeRenderer shapeRenderer;
+    
+	// shapeRenderer can draw Circles/Rectangles/etc.
+	private ShapeRenderer shapeRenderer;
 	
 	public GameRenderer(GameWorld world) {
         myWorld = world;

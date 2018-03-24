@@ -3,6 +3,10 @@ package de.opencodes.boxhunter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * Any new entity (Player, Enemy, Map, Items...) is initialized in GameWorld.
+ * Getters are required for GameRenderer to access the positional data of each entity
+ */
 public class GameWorld {
 
     private Player player1 = new Player(0,0,12,18);
