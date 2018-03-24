@@ -19,7 +19,9 @@ public class GameScreen implements Screen {
     }
     
 	@Override
-	public void show() { }
+	public void show() {
+		Gdx.app.log("GameScreen", "show called");
+	}
 
 	@Override
 	public void render(float delta) {
@@ -28,18 +30,29 @@ public class GameScreen implements Screen {
 	}
 
 	@Override
-	public void resize(int width, int height) { }
+	public void resize(int width, int height) {
+		Gdx.app.log("GameScreen", "resize called");
+	}
+
+
 
 	@Override
-	public void pause() { }
+	public void hide() {
+		Gdx.app.log("GameScreen", "hide called");
+	}
 
 	@Override
-	public void resume() { }
+	public void pause() {
+		Gdx.app.log("GameScreen", "pause called");
+	}
 
 	@Override
-	public void hide() { }
+	public void resume() {
+		Gdx.app.log("GameScreen", "resume called");
+	}
 
 	@Override
-	public void dispose() { }
-
+	public void dispose() {
+		// Leave blank
+	}
 }
