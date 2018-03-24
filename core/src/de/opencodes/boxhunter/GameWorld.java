@@ -11,24 +11,19 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class GameWorld {
 
-	private Player player1 = new Player(0, 0, 12, 18);
+	private Player player1 = new Player(30, 30, 40, 40);
 
-	// testvariable
-	int x = 0;
+
+
 
 	public void update(float delta) {
-		Gdx.app.log("GameWorld", "update");
 
-		// teest
-
-		int y = (int) getPlayer1().getPosition().y;
-
-		player1.setPosition(new Vector2(x++, y));
-
-		if (player1.getPosition().x > 137) {
-			player1.setPosition(new Vector2(0, y));
+		if (player1.getPosition().x < 137) {
+			player1.moveRight();
 		}
-	}
+        System.out.println("SpielerposX = " + player1.getPosition().x);
+        System.out.println("SpielerposY = " + player1.getPosition().y);
+    }
 
 	// --------------getter and setter-------------
 

@@ -31,7 +31,6 @@ public class GameRenderer {
 	}
 
 	public void render() {
-		Gdx.app.log("GameRenderer", "render");
 
 		// Schwarzer Hintergrund
 		Gdx.gl.glClearColor(0, 0, 0, 1);
