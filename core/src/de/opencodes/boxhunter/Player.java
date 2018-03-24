@@ -6,8 +6,6 @@ import com.badlogic.gdx.math.Vector2;
 public class Player {
 
     private Rectangle myRectangle;
-
-    private int width, heigth;
     private Vector2 velocity;
     private Vector2 position;
 
@@ -71,24 +69,18 @@ public class Player {
         this.heigth = height;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
 
     public int getHeigth() {
-        return heigth;
+        return (int) myRectangle.getHeight();
     }
 
-    public void setHeigth(int heigth) {
-        this.heigth = heigth;
-    }
 
     public Vector2 getVelocity() {
         return velocity;
     }
 
     public int getWidth() {
-        return width;
+        return (int)myRectangle.getWidth();
     }
 
     public void setVelocity(Vector2 velocity) {
