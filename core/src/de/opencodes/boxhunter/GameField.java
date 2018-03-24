@@ -16,7 +16,7 @@ public class GameField {
   public GameField(int tileSize, int gameWidth, int gameHeight) {
     this.tileSize = tileSize;
     this.width = (int) Math.floor(gameWidth / tileSize);
-    this.height = (int) Math.floor(gameHeight / tileSize);
+    this.height = (int) Math.floor(gameHeight  / tileSize);
     this.gameField = new int[width][height];
 
     clearField();
