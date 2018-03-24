@@ -17,14 +17,25 @@ public class GameWorld {
 
 
         //teest
-        int x = 0;
+
+       int x = 0;
         player1.setxPos(x++);
 
         if (player1.getxPos() > 137) {
         	player1.setxPos(0);
         }
     }
-	
+
+
+
+    //--------------getter and setter-------------
+
+    public Player getPlayer1() {
+        return player1;
+    }
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
 
 	
 }
