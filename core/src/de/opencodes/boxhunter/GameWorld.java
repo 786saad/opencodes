@@ -5,18 +5,22 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class GameWorld {
 
-	private Rectangle player = new Rectangle(0, 0, 17, 12);
+    private Player player1 = new Player(0,0,12,18);
+
 	
 	public void update(float delta) {
         Gdx.app.log("GameWorld", "update");
-        player.x++;
-        if (player.x > 137) {
-        	player.x = 0;
+
+
+        //teest
+        int x = 0;
+        player1.setxPos(x++);
+
+        if (player1.getxPos() > 137) {
+        	player1.setxPos(0);
         }
     }
 	
-	public Rectangle getPlayer() {
-        return player;
-    }
+
 	
 }
