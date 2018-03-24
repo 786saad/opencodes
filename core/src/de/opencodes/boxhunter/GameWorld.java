@@ -9,8 +9,8 @@ import com.badlogic.gdx.Gdx;
  */
 public class GameWorld {
 
-  private Player player1 = new Player(32, 32, 32, 32);
-  private GameField gameField = new GameField(32, Gdx.graphics.getWidth(),
+  private Player player1 = new Player(32, 32, 16, 16);
+  private GameField gameField = new GameField(64, Gdx.graphics.getWidth(),
       Gdx.graphics.getHeight());
 
 
