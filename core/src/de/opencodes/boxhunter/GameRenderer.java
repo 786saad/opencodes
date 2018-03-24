@@ -51,5 +51,23 @@ public class GameRenderer {
 		// Höre auf mit malen
 		shapeRenderer.end();
 
+		// Draw background
+    shapeRenderer.begin(ShapeType.Filled);
+    shapeRenderer.setColor(Color.GREEN);
+
+    int[][] gameField = myWorld.getGameField().getGameField();
+    int tileSize = myWorld.getGameField().getTileSize();
+
+    for (int h = 0; h < myWorld.getGameField().getHeight(); h++) {
+      for (int w = 0; w < myWorld.getGameField().getWidth(); w++) {
+        if (gameField[w][h] == GameFieldTypes.BOX.ordinal()){
+          shapeRenderer.rect(w * tileSize, h * tileSize, tileSize, tileSize);
+        }
+      }
+    }
+    shapeRenderer.end();
+
+
+
 	}
 }

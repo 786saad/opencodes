@@ -1,8 +1,6 @@
 package de.opencodes.boxhunter;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 
 /**
  * Any new entity (Player, Enemy, Map, Items...) is initialized in GameWorld.
@@ -11,27 +9,37 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class GameWorld {
 
-	private Player player1 = new Player(30, 30, 40, 40);
+  private Player player1 = new Player(30, 30, 40, 40);
+  private GameField gameField = new GameField(32, Gdx.graphics.getWidth(),
+      Gdx.graphics.getHeight());
 
 
+  public void update(float delta) {
+    Gdx.app.log("GameWorld", "update");
 
+    gameField.spawnBox();
+    player1.update();
 
-	public void update(float delta) {
+    System.out.println("SpielerposX = " + player1.getPosition().x);
+    System.out.println("SpielerposY = " + player1.getPosition().y);
+    // teest
 
-		player1.update();
-		
-        System.out.println("SpielerposX = " + player1.getPosition().x);
-        System.out.println("SpielerposY = " + player1.getPosition().y);
-    }
+    System.out.println("SpielerposX = " + player1.getPosition().x);
+    System.out.println("SpielerposY = " + player1.getPosition().y);
+  }
 
-	// --------------getter and setter-------------
+  // --------------getter and setter-------------
 
-	public Player getPlayer1() {
-		return player1;
-	}
+  public Player getPlayer1() {
+    return player1;
+  }
 
-	public void setPlayer1(Player player1) {
-		this.player1 = player1;
-	}
+  public void setPlayer1(Player player1) {
+    this.player1 = player1;
+  }
+
+  public GameField getGameField() {
+    return gameField;
+  }
 
 }
