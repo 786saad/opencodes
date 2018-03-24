@@ -5,22 +5,19 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Player {
 
-	private Rectangle myRectangle;
+    private Rectangle myRectangle;
 
-	private int width, heigth;
+    private int width, heigth;
+    private Vector2 velocity;
+    private Vector2 position;
 
-	private Vector2 velocity;
-	private Vector2 position;
+    // ------------------------constructor---------------------
 
-	// ------------------------constructor---------------------
-
-	public Player(int xPos, int yPos, int width, int height) {
-		myRectangle = new Rectangle(xPos, yPos, width, height);
-		velocity = new Vector2(0, 0);
-		position = new Vector2(xPos, yPos);
-	}
-
-
+    public Player(int xPos, int yPos, int width, int height) {
+        myRectangle = new Rectangle(xPos, yPos, width, height);
+        velocity = new Vector2(0, 0);
+        position = new Vector2(xPos, yPos);
+    }
 
 
     //------------------------------methods----------------------------------
@@ -32,9 +29,10 @@ public class Player {
         //todo check if there is obstacle on left side?
 
         //check if there is the map wall on left side??
-            movePosition();
+        movePosition();
         velocity.x = 0;
     }
+
     public void moveRight() {
         //todo chaneg dummy speed
         velocity.x = 5;
@@ -44,10 +42,12 @@ public class Player {
 
         velocity.x = 0;
     }
+
     public void moveUp() {
         velocity.y = 5;
         movePosition();
     }
+
     public void moveDown() {
         velocity.y = -5;
         movePosition();
@@ -58,8 +58,6 @@ public class Player {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
     }
-
-
 
 
     //------------------------getter and setter-----------------------------
@@ -73,36 +71,29 @@ public class Player {
         this.heigth = height;
     }
 
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
+    public int getHeigth() {
+        return heigth;
+    }
 
-	public int getHeigth() {
-		return heigth;
-	}
+    public void setHeigth(int heigth) {
+        this.heigth = heigth;
+    }
 
-	public void setHeigth(int heigth) {
-		this.heigth = heigth;
-	}
-
-
-	public Vector2 getVelocity() {
-		return velocity;
-	}
-
-
+    public Vector2 getVelocity() {
+        return velocity;
+    }
 
     public int getWidth() {
         return width;
     }
 
-
-	public void setVelocity(Vector2 velocity) {
-		this.velocity = velocity;
-	}
-
-
+    public void setVelocity(Vector2 velocity) {
+        this.velocity = velocity;
+    }
 
     public Vector2 getPosition() {
         return position;
@@ -111,5 +102,4 @@ public class Player {
     public void setPosition(Vector2 position) {
         this.position = position;
     }
-
 }
