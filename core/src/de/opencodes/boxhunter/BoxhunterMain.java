@@ -10,9 +10,11 @@ import com.badlogic.gdx.Gdx;
  */
 public class BoxhunterMain extends Game {
 
+
+	
 	@Override
 	public void create() {
 		Gdx.app.log("Game", "created");
-		setScreen(new GameScreen());
+		setScreen(new MenuScreen(this));
 	}
 }
