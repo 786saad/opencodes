@@ -26,7 +26,7 @@ public class GameWorld {
     player1.update();
 
     gameField.getPlayerPositionInArray(player2.getPosition().x, player2.getPosition().y);
-    player2.update();
+    //player2.update();
 
     //System.out.println("SpielerposX = " + player1.getPosition().x);
     //System.out.println("SpielerposY = " + player1.getPosition().y);
