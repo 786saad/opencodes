@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class ItemSpeed extends Item {
 
+
   private Vector2 velocity = null;
 
   public ItemSpeed(int xPos, int yPos, int countdown, int radius) {
