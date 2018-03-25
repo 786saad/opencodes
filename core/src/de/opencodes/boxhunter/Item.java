@@ -15,10 +15,6 @@ public abstract class Item {
     this.radius = radius;
   }
 
-  public void setCountdown(int countdown) {
-    this.countdown = countdown;
-  }
-
   public int getRadius() {
     return radius;
   }
@@ -57,7 +53,11 @@ public abstract class Item {
     return countdown;
   }
 
-  public void decrementCountdown(){
+  public void setCountdown(int countdown) {
+    this.countdown = countdown;
+  }
+
+  public void decrementCountdown() {
     this.countdown--;
   }
 }

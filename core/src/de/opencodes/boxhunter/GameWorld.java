@@ -13,18 +13,12 @@ public class GameWorld {
   private Player player2 = new Player(this, 90, 90, 64, 64);
 
   private GameField gameField = new GameField(64, Gdx.graphics.getWidth(),
-      Gdx.graphics.getHeight());
-
-  // STOP WITH ZE CHANGING OF THE MAP I NEED TO DEBUG THIS IN PEACE PLS
-  GameWorld() {
-	  gameField.spawnBox();
-
-
-  }
+      Gdx.graphics.getHeight(), 0.75f);
 
   public void update(float delta) {
     //Gdx.app.log("GameWorld", "update");
 
+    gameField.spawnBox(delta);
     player1.update(delta);
     player2.update(delta);
     
@@ -42,7 +36,6 @@ public class GameWorld {
     //System.out.println("SpielerposY = " + player1.getPosition().y);
   }
 
-
   // --------------getter and setter-------------
 
   public Player getPlayer1() {
@@ -53,18 +46,17 @@ public class GameWorld {
     this.player1 = player1;
   }
 
-    public Player getPlayer2() {
-        return player2;
-    }
-
-    public void setPlayer2(Player player2) {
-        this.player2 = player2;
-    }
-
-    public GameField getGameField() {
-    return gameField;
+  public Player getPlayer2() {
+    return player2;
   }
 
+  public void setPlayer2(Player player2) {
+    this.player2 = player2;
+  }
+
+  public GameField getGameField() {
+    return gameField;
+  }
 
 
 }

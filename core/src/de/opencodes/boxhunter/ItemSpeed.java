@@ -13,13 +13,13 @@ public class ItemSpeed extends Item {
 
   @Override
   public void activate() {
-    if (getCountdown() > 0){
-      if (velocity == null){
-          velocity = getPlayer().getVelocity();
-          getPlayer().setVelocity(velocity.scl(1.5f));
+    if (getCountdown() > 0) {
+      if (velocity == null) {
+        velocity = getPlayer().getVelocity();
+        getPlayer().setVelocity(velocity.scl(1.5f));
       }
     } else {
-        getPlayer().setVelocity(velocity);
+      getPlayer().setVelocity(velocity);
     }
   }
 }

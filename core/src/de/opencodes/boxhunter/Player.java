@@ -142,4 +142,9 @@ public class Player {
 	public Vector2 getPosition() {
 		return new Vector2(this.position.x, this.position.y);
 	}
+
+  public void restartGame() {
+    world.getGameField().clearField();
+  }
+
 }

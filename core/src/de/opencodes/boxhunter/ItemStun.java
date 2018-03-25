@@ -12,10 +12,10 @@ public class ItemStun extends Item {
 
   @Override
   public void activate() {
-    if (getCountdown() > 0){
-      if (velocity == null){
+    if (getCountdown() > 0) {
+      if (velocity == null) {
         velocity = getPlayer().getVelocity();
-        getPlayer().setVelocity(new Vector2(0,0));
+        getPlayer().setVelocity(new Vector2(0, 0));
       }
     } else {
       getPlayer().setVelocity(velocity);
