@@ -56,6 +56,15 @@ public class GameRenderer {
 		shapeRenderer.end();
 
 		// Fange an zu malen
+		shapeRenderer.begin(ShapeType.Line);
+		shapeRenderer.setColor(Color.WHITE);
+		for (int h = 0; h < myWorld.getGameField().getHeight(); h++) {
+			for (int w = 0; w < myWorld.getGameField().getWidth(); w++) {
+				shapeRenderer.rect(w * tileSize, ((myWorld.getGameField().getHeight() - h) - 1) * tileSize, tileSize, tileSize);
+			}
+		}
+		shapeRenderer.end();
+		
 		shapeRenderer.begin(ShapeType.Filled);
 
 		// Male in rot
