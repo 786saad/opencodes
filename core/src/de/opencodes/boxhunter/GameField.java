@@ -77,7 +77,10 @@ public class GameField {
    */
   public Vector2 getPlayerPositionInArray(float xPos, float yPos) {
 	  //System.out.println("POS: " + (Math.floor(xPos / tileSize)-1) + ", " + (Math.floor((Gdx.graphics.getHeight() - yPos)-1) / tileSize));
-	  return new Vector2((float)Math.floor(xPos / tileSize) - 1, (float)(Math.floor((Gdx.graphics.getHeight() - yPos) / tileSize) - 1));
+      int convertedX = (int) xPos;
+      int convertedY = (int) yPos;
+      return new Vector2(convertedX / tileSize, convertedY / tileSize);
+	//  return new Vector2((float)Math.floor(xPos / tileSize) - 1, (float)(Math.floor((Gdx.graphics.getHeight() - yPos) / tileSize) - 1));
   }
   
   public void debugField() {
