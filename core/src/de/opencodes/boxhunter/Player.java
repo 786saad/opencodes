@@ -1,83 +1,64 @@
 package de.opencodes.boxhunter;
 
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player {
 
-    private Rectangle rectangle;
+    private Vector2 position;
     private Vector2 velocity;
     private GameWorld world;
+    private int width;
+    private int height;
     
     // ------------------------constructor---------------------
 
     public Player(GameWorld world, int xPos, int yPos, int width, int height) {
         this.world = world;
-    	rectangle = new Rectangle(xPos, yPos, width, height);
-        velocity = new Vector2(0, 0);
+    	this.position = new Vector2(xPos, yPos);
+        this.velocity = new Vector2(0, 0);
+        this.width = width;
+        this.height = height;
     }
 
 
     //------------------------------methods----------------------------------
 
     public void update() {
+    	System.out.println(velocity.x + ", " + velocity.y);
+    	Vector2 temp = new Vector2(position);
+    	temp.add(velocity);
     	
-    	// rectangle.x and rectangle.y denote the position of the player
-    	Vector2 mapPosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
+    	boolean collision = false;
+	  	  for (RectangleMapObject rectangleObject : world.getMapObjects().getByType(RectangleMapObject.class)) {
+	
+		      Rectangle rectangle = rectangleObject.getRectangle();
+		      if (Intersector.overlaps(rectangle, getRectangle())) {
+		    	  position.sub(velocity);
+		    	  velocity = new Vector2(0, 0);
+		    	  collision = true;
+		    	  break;
+		      }
+		  }
+	  	  
+	  	  if(!collision)
+	  		  position.add(velocity);
     	
-    	GameFieldTypes[][] map = world.getGameField().getMap(); 
-    	
-    	int xPos = (int)mapPosition.x;
-    	int yPos = (int)mapPosition.y;
-    	
-    	System.out.println(xPos + ", " + yPos);
-    	
-    	float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
-		float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
-		
-		System.out.println("Inside Tile: " + xPosInsideTile + ", " + yPosInsideTile); // 64 = tileSize
-    	
-    	if(isWallRightSide(map, xPos, yPos)) {
-    		
-    		//float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
-    		//float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
-    		
-    		if(xPosInsideTile + 30 <= 60) {
-    			
-    			if(velocity.x > 0) {
-        			velocity.x = 0;
-    			}
-    		}
-    	}
-    	
-    	
-    	this.rectangle.x += this.velocity.x;    			
-        this.rectangle.y += this.velocity.y;
     }
     
     public void moveLeft() {
-        //todo change dummy speed
         velocity.x = -5;
-        //todo check if there is obstacle on left side?
-
-        //check if there is the map wall on left side??
     }
     
     public void stopMoveLeft() {
     	velocity.x = 0;
-    	
     }
 
-    public boolean isWallRightSide(GameFieldTypes[][] map, int xPos, int yPos) {
-    	return map[xPos + 1][yPos] == GameFieldTypes.BOX;
-    }
     
     public void moveRight() {
-        //todo chaneg dummy speed
         velocity.x = 5;
-        //todo check if there is obstacle on right side?
-        //check if there is map wall right on side`???
-        this.rectangle.x += this.velocity.x;
     }
 
     public void stopMoveRight() {
@@ -85,7 +66,7 @@ public class Player {
     }
     
     public void moveUp() {
-        velocity.y = 5;
+        velocity.y = -5;
     }
     
     public void stopMoveUp() {
@@ -93,23 +74,28 @@ public class Player {
     }
 
     public void moveDown() {
-        velocity.y = -5;
+        velocity.y = 5;
     }
     public void stopMoveDown() {
     	velocity.y = 0;    	
     }
     
  
-
-
     //------------------------getter and setter-----------------------------
     public Rectangle getRectangle() {
-        return rectangle;
+        return new Rectangle(position.x, position.y, this.width, this.height);
     }
 
-
+    public void setX(int pos) {
+    	position.x = pos;
+    }
+    
+    public void setY(int pos) {
+    	position.y = pos;
+    }
+    
     public int getHeigth() {
-        return (int) rectangle.getHeight();
+        return this.height;
     }
 
 
@@ -118,7 +104,7 @@ public class Player {
     }
 
     public int getWidth() {
-        return (int) rectangle.getWidth();
+        return this.width;
     }
 
     public void setVelocity(Vector2 velocity) {
@@ -126,6 +112,6 @@ public class Player {
     }
 
     public Vector2 getPosition() {
-        return new Vector2(this.rectangle.x, this.rectangle.y);
+        return position;
     }
 }
