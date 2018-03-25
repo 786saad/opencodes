@@ -10,6 +10,7 @@ import com.badlogic.gdx.Gdx;
 public class GameWorld {
 
   private Player player1 = new Player(this, 32, 32, 16, 16);
+  private Player player2 = new Player(this, 90, 90, 16, 16);
   private GameField gameField = new GameField(64, Gdx.graphics.getWidth(),
       Gdx.graphics.getHeight());
 
@@ -23,6 +24,9 @@ public class GameWorld {
 
     gameField.getPlayerPositionInArray(player1.getPosition().x, player1.getPosition().y);
     player1.update();
+
+    gameField.getPlayerPositionInArray(player2.getPosition().x, player2.getPosition().y);
+    player2.update();
 
     //System.out.println("SpielerposX = " + player1.getPosition().x);
     //System.out.println("SpielerposY = " + player1.getPosition().y);
@@ -43,8 +47,18 @@ public class GameWorld {
     this.player1 = player1;
   }
 
-  public GameField getGameField() {
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
+
+    public GameField getGameField() {
     return gameField;
   }
+
+
 
 }

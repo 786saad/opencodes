@@ -21,7 +21,7 @@ public class GameScreen implements Screen {
 		// GameRenderer muss wissen WO was hingemalt werden soll
 		renderer = new GameRenderer(world);
 		
-		Gdx.input.setInputProcessor(new InputHandler(world.getPlayer1()));
+		Gdx.input.setInputProcessor(new InputHandler(world.getPlayer1(), world.getPlayer2()));
 	}
 
 	@Override

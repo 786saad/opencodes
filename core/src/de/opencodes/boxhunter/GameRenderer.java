@@ -65,6 +65,9 @@ public class GameRenderer {
 		shapeRenderer.rect(myWorld.getPlayer1().getPosition().x, myWorld.getPlayer1().getPosition().y,
 				myWorld.getPlayer1().getWidth(), myWorld.getPlayer1().getHeigth());
 
+        shapeRenderer.rect(myWorld.getPlayer2().getPosition().x, myWorld.getPlayer2().getPosition().y,
+                myWorld.getPlayer2().getWidth(), myWorld.getPlayer2().getHeigth());
+
 		// Höre auf mit malen
 		shapeRenderer.end();
 
