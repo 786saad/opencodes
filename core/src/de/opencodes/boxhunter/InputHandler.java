@@ -11,26 +11,41 @@ import com.badlogic.gdx.Input.Keys;
 // TODO: Unfinished http://www.kilobolt.com/day-10-gamestates-and-high-score.html
 public class InputHandler implements InputProcessor {
 
-	private Player player;
+	private Player player1, player2;
 
-	InputHandler(Player player) {
-		this.player = player;	
+	InputHandler(Player player1, Player player2) {
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 	
 	@Override
 	public boolean keyDown(int keycode) {
 		switch(keycode) {
+			//------player 1 movements----
 			case Keys.LEFT:
-				player.moveLeft();
+				player1.moveLeft();
 				break;
 			case Keys.RIGHT:
-				player.moveRight();
+				player1.moveRight();
 				break;
 			case Keys.DOWN:
-				player.moveDown();
+				player1.moveDown();
 				break;
 			case Keys.UP:
-				player.moveUp();
+				player1.moveUp();
+				break;
+				//----------player 2 movements------
+			case Keys.W:
+				player2.moveUp();
+				break;
+			case Keys.A:
+				player2.moveLeft();
+				break;
+			case Keys.D:
+				player2.moveRight();
+				break;
+			case Keys.S:
+				player2.moveDown();
 				break;
 			default:
 				break;
@@ -43,17 +58,31 @@ public class InputHandler implements InputProcessor {
 	public boolean keyUp(int keycode) {
 		
 		switch(keycode) {
+			//------player 1 movements----
 		case Keys.LEFT:
-			player.stopMoveLeft();
+			player1.stopMoveLeft();
 			break;
 		case Keys.RIGHT:
-			player.stopMoveRight();
+			player1.stopMoveRight();
 			break;
 		case Keys.DOWN:
-			player.stopMoveDown();
+			player1.stopMoveDown();
 			break;
 		case Keys.UP:
-			player.stopMoveUp();
+			player1.stopMoveUp();
+			break;
+			//-----player 2 movements
+		case Keys.W:
+			player2.stopMoveUp();
+			break;
+		case Keys.A:
+			player2.stopMoveLeft();
+			break;
+		case Keys.D:
+			player2.stopMoveRight();
+			break;
+		case Keys.S:
+			player2.stopMoveDown();
 			break;
 		default:
 			break;
