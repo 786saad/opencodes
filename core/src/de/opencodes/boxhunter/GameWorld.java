@@ -9,8 +9,8 @@ import com.badlogic.gdx.Gdx;
  */
 public class GameWorld {
 
-  private Player player1 = new Player(this, 32, 32, 16, 16);
-  private Player player2 = new Player(this, 90, 90, 16, 16);
+  private Player player1 = new Player(this, 64, 64, 64, 64);
+  private Player player2 = new Player(this, 90, 90, 64, 64);
   private GameField gameField = new GameField(64, Gdx.graphics.getWidth(),
       Gdx.graphics.getHeight());
 
@@ -23,7 +23,7 @@ public class GameWorld {
     //Gdx.app.log("GameWorld", "update");
 
     gameField.getPlayerPositionInArray(player1.getPosition().x, player1.getPosition().y);
-    player1.update();
+    player1.update(delta);
 
     gameField.getPlayerPositionInArray(player2.getPosition().x, player2.getPosition().y);
     //player2.update();
