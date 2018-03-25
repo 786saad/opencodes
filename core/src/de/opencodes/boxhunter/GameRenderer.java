@@ -46,12 +46,13 @@ public class GameRenderer {
 		for (int h = 0; h < myWorld.getGameField().getHeight(); h++) {
 			for (int w = 0; w < myWorld.getGameField().getWidth(); w++) {
 				if (gameField[w][h] == GameFieldTypes.BOX.ordinal()){
-					shapeRenderer.rect(w * tileSize, h * tileSize, tileSize, tileSize);
+					shapeRenderer.rect(((myWorld.getGameField().getWidth() - w) - 1) * tileSize,
+							((myWorld.getGameField().getHeight() - h) - 1) * tileSize, tileSize, tileSize);
 				}
 			}
 		}
 		shapeRenderer.end();
-		
+
 		// Fange an zu malen
 		shapeRenderer.begin(ShapeType.Filled);
 
