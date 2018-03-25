@@ -9,23 +9,27 @@ import com.badlogic.gdx.Gdx;
  */
 public class GameWorld {
 
-  private Player player1 = new Player(32, 32, 16, 16);
+  private Player player1 = new Player(this, 32, 32, 16, 16);
   private GameField gameField = new GameField(64, Gdx.graphics.getWidth(),
       Gdx.graphics.getHeight());
 
+  // STOP WITH ZE CHANGING OF THE MAP I NEED TO DEBUG THIS IN PEACE PLS
+  GameWorld() {
+	  gameField.spawnBox();
+  }
 
   public void update(float delta) {
-    Gdx.app.log("GameWorld", "update");
+    //Gdx.app.log("GameWorld", "update");
 
-    gameField.spawnBox();
+    gameField.getPlayerPositionInArray(player1.getPosition().x, player1.getPosition().y);
     player1.update();
 
-    System.out.println("SpielerposX = " + player1.getPosition().x);
-    System.out.println("SpielerposY = " + player1.getPosition().y);
+    //System.out.println("SpielerposX = " + player1.getPosition().x);
+    //System.out.println("SpielerposY = " + player1.getPosition().y);
     // teest
 
-    System.out.println("SpielerposX = " + player1.getPosition().x);
-    System.out.println("SpielerposY = " + player1.getPosition().y);
+    //System.out.println("SpielerposX = " + player1.getPosition().x);
+    //System.out.println("SpielerposY = " + player1.getPosition().y);
   }
 
 

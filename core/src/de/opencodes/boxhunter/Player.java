@@ -7,11 +7,13 @@ public class Player {
 
     private Rectangle rectangle;
     private Vector2 velocity;
-
+    private GameWorld world;
+    
     // ------------------------constructor---------------------
 
-    public Player(int xPos, int yPos, int width, int height) {
-        rectangle = new Rectangle(xPos, yPos, width, height);
+    public Player(GameWorld world, int xPos, int yPos, int width, int height) {
+        this.world = world;
+    	rectangle = new Rectangle(xPos, yPos, width, height);
         velocity = new Vector2(0, 0);
     }
 
@@ -19,6 +21,7 @@ public class Player {
     //------------------------------methods----------------------------------
 
     public void update() {
+    	world.getGameField();
     	movePosition();
     }
     
@@ -63,7 +66,32 @@ public class Player {
     }
     
     public void movePosition() {
-        this.rectangle.x += this.velocity.x;
+    	
+    	// rectangle.x and rectangle.y denote the position of the player
+    	Vector2 tilePosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
+    	
+    	GameFieldTypes[][] map = world.getGameField().getMap(); 
+    	
+    	int xPos = (int)tilePosition.x + 1;
+    	int yPos = (int)tilePosition.y;
+    	
+    	System.out.println(xPos + ", " + yPos);
+    	
+    	float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
+		float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
+		
+		System.out.println("Inside Tile: " + xPosInsideTile + ", " + yPosInsideTile); // 64 = tileSize
+    	
+    	if(map[xPos + 1][yPos] == GameFieldTypes.BOX) {
+    		
+    		
+    		
+    	}else {
+    		
+    	}
+    	
+    	
+    	this.rectangle.x += this.velocity.x;
         this.rectangle.y += this.velocity.y;
     }
 
