@@ -23,24 +23,27 @@ public class Player {
     public void update() {
     	
     	// rectangle.x and rectangle.y denote the position of the player
+        //float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
+        //float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
 
-    	
+        Vector2 mapPosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
+        GameFieldTypes[][] map = world.getGameField().getMap();
+        int mapPosX = (int)mapPosition.x;
+        int mapPosY = (int)mapPosition.y;
 
-    		
-    		//float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
-    		//float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
+        if (isWallRightSide()) {
+            System.out.println("collission right side");
+        } else if (isWallUpSide()) {
+            System.out.println("collission up side");
+        }else if (isWallLeftSide()) {
+            System.out.println("collission left side");
+        } else if(isWallDownSide()) {
+            System.out.println("collission down side");
+        } else {
 
-
-      if (isWallUpSide()) {
-          System.out.println("Wall is upside");
-      }else if (isWallRightSide()) {
-          System.out.println("wall is right side");
-      }
-
-        this.rectangle.x += this.velocity.x;
-
-
-        this.rectangle.y += this.velocity.y;
+            this.rectangle.x += this.velocity.x;
+            this.rectangle.y += this.velocity.y;
+        }
     }
     
     public void moveLeft() {
@@ -50,12 +53,31 @@ public class Player {
 
         //check if there is the map wall on left side??
     }
-    
     public void stopMoveLeft() {
     	velocity.x = 0;
     	
     }
 
+    public boolean isWallLeftSide() {
+        return false;
+    }
+    public boolean isWallDownSide() {
+        boolean coolide = false;
+        boolean grobCollide = false;
+        boolean fineCollide = false;
+
+        Vector2 mapPosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
+        GameFieldTypes[][] map = world.getGameField().getMap();
+        int mapPosX = (int)mapPosition.x;
+        int mapPosY = (int)mapPosition.y;
+
+        grobCollide = (map[(mapPosX )][mapPosY + 1] == GameFieldTypes.BOX);
+        fineCollide = (((mapPosY +1) * 64) - ( rectangle.y + velocity.y)   <= 9);
+
+        coolide = grobCollide && fineCollide;
+
+        return coolide;
+    }
     public boolean isWallRightSide() {
         boolean coolide = false;
         boolean grobCollide = false;
@@ -67,39 +89,37 @@ public class Player {
         int mapPosY = (int)mapPosition.y;
 
         grobCollide = (map[(mapPosX + 1)][mapPosY] == GameFieldTypes.BOX);
-        fineCollide = (( rectangle.x + velocity.x) - ((mapPosX +1) * 64) > 0);
-        /*if (grobCollide && fineCollide) {
-            coolide = true;
-            System.out.println("collide" + coolide);
-        }*/
-        if (grobCollide) {
-            System.out.println("wall is rightside");
-        }
+        fineCollide = (((mapPosX +1) * 64) - ( rectangle.x + velocity.x)   <= 13);
+
+        coolide = grobCollide && fineCollide;
 
         return coolide;
     }
     public boolean isWallUpSide() {
-        boolean isWall = false;
-        boolean isWallNext = false;
+        boolean coolide = false;
+        boolean grobCollide = false;
+        boolean fineCollide = false;
 
         Vector2 mapPosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
         GameFieldTypes[][] map = world.getGameField().getMap();
         int mapPosX = (int)mapPosition.x;
         int mapPosY = (int)mapPosition.y;
 
-        isWallNext = (map[(mapPosX )][mapPosY +  1] == GameFieldTypes.BOX);
+        grobCollide = (map[(mapPosX )][mapPosY + 1] == GameFieldTypes.BOX);
+        fineCollide = (((mapPosY +1) * 64) - ( rectangle.y + velocity.y)   <= 13);
 
-        if (isWallNext) {
-            if ( isWall =  (( rectangle.y + velocity.y) - ((mapPosY +1) * 64) > 0)) {
-                System.out.println("collision");
-            }
-        }
-        return isWall;
+        coolide = grobCollide && fineCollide;
 
+        return coolide;
     }
     public void moveRight() {
         if (!isWallRightSide()) {
             velocity.x = 5;
+        }
+    }
+    public void moveUp() {
+        if (!isWallUpSide()) {
+            velocity.y = 5;
         }
     }
 
@@ -107,9 +127,7 @@ public class Player {
     	velocity.x = 0;
     }
     
-    public void moveUp() {
-        velocity.y = 5;
-    }
+
     
     public void stopMoveUp() {
     	velocity.y = 0;

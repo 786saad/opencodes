@@ -26,15 +26,7 @@ public class GameWorld {
   public void update(float delta) {
     //Gdx.app.log("GameWorld", "update");
 
-    gameField.getPlayerPositionInArray(player1.getPosition().x, player1.getPosition().y);
-    if (player1.isWallRightSide()) {
-        System.out.println("collission");
-    } else {
-        player1.update();
-
-    }
-
-    gameField.getPlayerPositionInArray(player2.getPosition().x, player2.getPosition().y);
+    player1.update();
     player2.update();
 
     //System.out.println("SpielerposX = " + player1.getPosition().x);
