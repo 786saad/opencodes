@@ -21,8 +21,38 @@ public class Player {
     //------------------------------methods----------------------------------
 
     public void update() {
-    	world.getGameField();
-    	movePosition();
+    	
+    	// rectangle.x and rectangle.y denote the position of the player
+    	Vector2 mapPosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
+    	
+    	GameFieldTypes[][] map = world.getGameField().getMap(); 
+    	
+    	int xPos = (int)mapPosition.x;
+    	int yPos = (int)mapPosition.y;
+    	
+    	System.out.println(xPos + ", " + yPos);
+    	
+    	float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
+		float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
+		
+		System.out.println("Inside Tile: " + xPosInsideTile + ", " + yPosInsideTile); // 64 = tileSize
+    	
+    	if(isWallRightSide(map, xPos, yPos)) {
+    		
+    		//float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
+    		//float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
+    		
+    		if(xPosInsideTile + 30 <= 60) {
+    			
+    			if(velocity.x > 0) {
+        			velocity.x = 0;
+    			}
+    		}
+    	}
+    	
+    	
+    	this.rectangle.x += this.velocity.x;    			
+        this.rectangle.y += this.velocity.y;
     }
     
     public void moveLeft() {
@@ -38,12 +68,16 @@ public class Player {
     	
     }
 
+    public boolean isWallRightSide(GameFieldTypes[][] map, int xPos, int yPos) {
+    	return map[xPos + 1][yPos] == GameFieldTypes.BOX;
+    }
+    
     public void moveRight() {
         //todo chaneg dummy speed
         velocity.x = 5;
         //todo check if there is obstacle on right side?
         //check if there is map wall right on side`???
-
+        this.rectangle.x += this.velocity.x;
     }
 
     public void stopMoveRight() {
@@ -65,35 +99,7 @@ public class Player {
     	velocity.y = 0;    	
     }
     
-    public void movePosition() {
-    	
-    	// rectangle.x and rectangle.y denote the position of the player
-    	Vector2 tilePosition = world.getGameField().getPlayerPositionInArray(this.rectangle.x, this.rectangle.y);
-    	
-    	GameFieldTypes[][] map = world.getGameField().getMap(); 
-    	
-    	int xPos = (int)tilePosition.x + 1;
-    	int yPos = (int)tilePosition.y;
-    	
-    	System.out.println(xPos + ", " + yPos);
-    	
-    	float xPosInsideTile = (this.rectangle.x + this.rectangle.width) % 64;
-		float yPosInsideTile = (this.rectangle.y + this.rectangle.height) % 64;
-		
-		System.out.println("Inside Tile: " + xPosInsideTile + ", " + yPosInsideTile); // 64 = tileSize
-    	
-    	if(map[xPos + 1][yPos] == GameFieldTypes.BOX) {
-    		
-    		
-    		
-    	}else {
-    		
-    	}
-    	
-    	
-    	this.rectangle.x += this.velocity.x;
-        this.rectangle.y += this.velocity.y;
-    }
+ 
 
 
     //------------------------getter and setter-----------------------------
